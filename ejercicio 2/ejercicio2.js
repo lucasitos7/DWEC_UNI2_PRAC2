@@ -1,8 +1,6 @@
 //import {Grupo} from "./grupo.js";
 
 class Grupo{
-    codigoGrupo;
-    numero;
     constructor(codigoGrupo, numero){
         this._codigoGrupo=codigoGrupo;
         this._numero=numero;
@@ -24,9 +22,6 @@ class Grupo{
 }
 
 class Instituto{
-    codigoInstituto;
-    nombre;
-    grupos;
     constructor(codigoInstituto, nombre, grupos){
         this._codigoInstituto=codigoInstituto;
         this._nombre=nombre;
@@ -56,15 +51,20 @@ class Instituto{
         console.log('El código del instituto es: '+ this.CodigoInstituto);
     }
     numeroAlumnos(){
-        /*for(let i of this.Grupos){
-            SUMATORIO DE TODOS, FALTA  QUE SE SUMEN Y AGREGARLOS
+        let conta=0;
+        for(let i=0;i<this.Grupos.length;i++){
+            conta+=this.Grupos[i].Numero;
+        }
+        console.log("El numero de alumnos es: "+conta);
+
+        /*              ASI NO FUNCIONA ???
+        for(let i of this.Grupos){
+            conta+=this.Grupos[i].Numero;
         }*/
-        console.log("El numero de alumnos es: "+this.Grupos.Numero);
     }
-    addGrupos(){
-   
+    addGrupos(gr){
+        this.Grupos.push(gr);
     }
-    
 } 
 
 
@@ -72,10 +72,21 @@ var grupo1=new Grupo(1,20);
 var grupo2=new Grupo(2,15);
 var grupo3=new Grupo(3,10);
 
-var insti1=new Instituto(1,"Fleming",grupo1);
-var insti2=new Instituto(1,"Fleming",grupo2);
-var insti1=new Instituto(1,"Fleming",grupo3);
+var grupos=[];
+grupos.push(grupo1);
+grupos.push(grupo3);
+grupos.push(grupo2);
 
-console.log(insti1.CodigoInstituto);
+var insti1=new Instituto(1,"Fleming",[grupo1,grupo2]);
+var insti2=new Instituto(1,"Fleming",grupos);
+var insti3=new Instituto(1,"Fleming",grupos3=[]);
+
+
+console.log(insti1);
+console.log(insti2);
+
 insti1.codigoInsti();
 insti1.numeroAlumnos();
+insti3.addGrupos(grupo3);
+insti3.addGrupos(grupo2);
+console.log(insti3);
